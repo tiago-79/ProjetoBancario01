@@ -9,7 +9,7 @@ public class ContaInvestimento extends Conta {
     private int fatorRendimento;
     @Override
     public void registrarAcao() {
-        System.out.println("Ação na conta investimento");
+        System.out.println("Ação na conta investimento teste!");
     }
 
     public int getFatorRendimento() {
