@@ -1,4 +1,4 @@
-package br.gov.caixa.lib;
+package br.gov.caixa.enumeradores;
 
 public enum Classificacao {
     PF,

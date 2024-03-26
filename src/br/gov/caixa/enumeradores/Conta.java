@@ -1,26 +1,34 @@
-package br.gov.caixa.lib;
+package br.gov.caixa.enumeradores;
 
+import br.gov.caixa.RegistroAcao;
 import br.gov.caixa.Usuario;
+import br.gov.caixa.interfaces.InterfaceConta;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public abstract class Conta {
+public abstract class Conta implements InterfaceConta {
     protected int idConta;
     protected float saldo;
     protected Date dataAtualizazao;
     protected Status status;
     protected Usuario usuario;
+    protected List<RegistroAcao> registroDeAcoes = new ArrayList<>();
+
 
     // ------- MÉTODOS --------
     public void sacar(float valorDoSaque){
-        if (valorDoSaque >=  saldo) {
+        if (valorDoSaque >=  getSaldo()) {
             if (usuario.getClassificacao() == Classificacao.PJ) {
                 if (valorDoSaque >= (valorDoSaque + (valorDoSaque * 0.005))){ // se possui saldo para pagar a taxa de 0,005%
-                    saldo = (float) (valorDoSaque + (valorDoSaque * 0.005));
+                    setSaldo((float) (valorDoSaque + (valorDoSaque * 0.005)));
                 }
             } else {
-                saldo -= valorDoSaque;
+                setSaldo(getSaldo() - valorDoSaque);
             }
+        } else {
+//            *** SALDO INSUFICIENTE
         }
     }
 
@@ -32,7 +40,7 @@ public abstract class Conta {
 
     }
 
-    public float consultaSaldo (int idConta) {
+    public float consultarSaldo(int idConta) {
         return saldo;
     }
 
@@ -79,5 +87,11 @@ public abstract class Conta {
         this.usuario = usuario;
     }
 
+    public List<RegistroAcao> getRegistroDeAcoes() {
+        return registroDeAcoes;
+    }
 
+    public void setRegistroDeAcoes(List<RegistroAcao> registroDeAcoes) {
+        this.registroDeAcoes = registroDeAcoes;
+    }
 }

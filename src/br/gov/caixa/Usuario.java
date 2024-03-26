@@ -1,15 +1,15 @@
 package br.gov.caixa;
 
-import br.gov.caixa.lib.Classificacao;
-import br.gov.caixa.lib.Status;
+import br.gov.caixa.enumeradores.Classificacao;
+import br.gov.caixa.enumeradores.Status;
 
 import java.util.Date;
 
 public class Usuario {
-    private long idUsuario;
+    private long idUsuario; // mudar para tipo String
     private Classificacao classificacao;
     private String nomeUsuario;
-    private  Date dataDeCadastro;
+    private Date dataDeCadastro;
     private Status status;
     private ContaCorrente contaCorrente;
 

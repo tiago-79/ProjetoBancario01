@@ -1,17 +1,17 @@
 package br.gov.caixa;
 
-import br.gov.caixa.lib.Conta;
-import br.gov.caixa.lib.Status;
-
-import java.util.Date;
+import br.gov.caixa.enumeradores.Conta;
 
 public class ContaInvestimento extends Conta {
     private int fatorRendimento;
+
+    // ------- MÉTODOS --------
     @Override
     public void registrarAcao() {
         System.out.println("Ação na conta investimento teste!");
     }
 
+    // ------- GETS & SETS --------
     public int getFatorRendimento() {
         return fatorRendimento;
     }
